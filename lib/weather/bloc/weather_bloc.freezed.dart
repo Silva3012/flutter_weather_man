@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WeatherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onFetchWeather,
+    required TResult Function(Object? city) onFetchWeather,
     required TResult Function() onRefreshWeather,
     required TResult Function() onToggleUnits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? onFetchWeather,
+    TResult? Function(Object? city)? onFetchWeather,
     TResult? Function()? onRefreshWeather,
     TResult? Function()? onToggleUnits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onFetchWeather,
+    TResult Function(Object? city)? onFetchWeather,
     TResult Function()? onRefreshWeather,
     TResult Function()? onToggleUnits,
     required TResult orElse(),
@@ -85,6 +85,8 @@ abstract class _$$OnFetchWeatherImplCopyWith<$Res> {
   factory _$$OnFetchWeatherImplCopyWith(_$OnFetchWeatherImpl value,
           $Res Function(_$OnFetchWeatherImpl) then) =
       __$$OnFetchWeatherImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object? city});
 }
 
 /// @nodoc
@@ -94,57 +96,80 @@ class __$$OnFetchWeatherImplCopyWithImpl<$Res>
   __$$OnFetchWeatherImplCopyWithImpl(
       _$OnFetchWeatherImpl _value, $Res Function(_$OnFetchWeatherImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? city = freezed,
+  }) {
+    return _then(_$OnFetchWeatherImpl(
+      freezed == city ? _value.city : city,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$OnFetchWeatherImpl implements OnFetchWeather {
-  const _$OnFetchWeatherImpl();
+  const _$OnFetchWeatherImpl(this.city);
+
+  @override
+  final Object? city;
 
   @override
   String toString() {
-    return 'WeatherEvent.onFetchWeather()';
+    return 'WeatherEvent.onFetchWeather(city: $city)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OnFetchWeatherImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$OnFetchWeatherImpl &&
+            const DeepCollectionEquality().equals(other.city, city));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(city));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnFetchWeatherImplCopyWith<_$OnFetchWeatherImpl> get copyWith =>
+      __$$OnFetchWeatherImplCopyWithImpl<_$OnFetchWeatherImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onFetchWeather,
+    required TResult Function(Object? city) onFetchWeather,
     required TResult Function() onRefreshWeather,
     required TResult Function() onToggleUnits,
   }) {
-    return onFetchWeather();
+    return onFetchWeather(city);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? onFetchWeather,
+    TResult? Function(Object? city)? onFetchWeather,
     TResult? Function()? onRefreshWeather,
     TResult? Function()? onToggleUnits,
   }) {
-    return onFetchWeather?.call();
+    return onFetchWeather?.call(city);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onFetchWeather,
+    TResult Function(Object? city)? onFetchWeather,
     TResult Function()? onRefreshWeather,
     TResult Function()? onToggleUnits,
     required TResult orElse(),
   }) {
     if (onFetchWeather != null) {
-      return onFetchWeather();
+      return onFetchWeather(city);
     }
     return orElse();
   }
@@ -185,7 +210,12 @@ class _$OnFetchWeatherImpl implements OnFetchWeather {
 }
 
 abstract class OnFetchWeather implements WeatherEvent {
-  const factory OnFetchWeather() = _$OnFetchWeatherImpl;
+  const factory OnFetchWeather(final Object? city) = _$OnFetchWeatherImpl;
+
+  Object? get city;
+  @JsonKey(ignore: true)
+  _$$OnFetchWeatherImplCopyWith<_$OnFetchWeatherImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -226,7 +256,7 @@ class _$OnRefreshWeatherImpl implements OnRefreshWeather {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onFetchWeather,
+    required TResult Function(Object? city) onFetchWeather,
     required TResult Function() onRefreshWeather,
     required TResult Function() onToggleUnits,
   }) {
@@ -236,7 +266,7 @@ class _$OnRefreshWeatherImpl implements OnRefreshWeather {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? onFetchWeather,
+    TResult? Function(Object? city)? onFetchWeather,
     TResult? Function()? onRefreshWeather,
     TResult? Function()? onToggleUnits,
   }) {
@@ -246,7 +276,7 @@ class _$OnRefreshWeatherImpl implements OnRefreshWeather {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onFetchWeather,
+    TResult Function(Object? city)? onFetchWeather,
     TResult Function()? onRefreshWeather,
     TResult Function()? onToggleUnits,
     required TResult orElse(),
@@ -334,7 +364,7 @@ class _$OnToggleUnitsImpl implements OnToggleUnits {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onFetchWeather,
+    required TResult Function(Object? city) onFetchWeather,
     required TResult Function() onRefreshWeather,
     required TResult Function() onToggleUnits,
   }) {
@@ -344,7 +374,7 @@ class _$OnToggleUnitsImpl implements OnToggleUnits {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? onFetchWeather,
+    TResult? Function(Object? city)? onFetchWeather,
     TResult? Function()? onRefreshWeather,
     TResult? Function()? onToggleUnits,
   }) {
@@ -354,7 +384,7 @@ class _$OnToggleUnitsImpl implements OnToggleUnits {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onFetchWeather,
+    TResult Function(Object? city)? onFetchWeather,
     TResult Function()? onRefreshWeather,
     TResult Function()? onToggleUnits,
     required TResult orElse(),

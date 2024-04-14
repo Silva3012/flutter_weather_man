@@ -11,8 +11,7 @@ part 'weather_bloc.freezed.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final WeatherRepository weatherRepository;
-  WeatherBloc({required this.weatherRepository})
-      : super(WeatherState.initial()) {
+  WeatherBloc(this.weatherRepository) : super(WeatherState.initial()) {
     on<WeatherEvent>((event, emit) async {
       await event.map(onFetchWeather: (OnFetchWeather? city) async {
         if (city == null) return;
