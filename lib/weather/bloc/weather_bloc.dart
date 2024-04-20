@@ -13,14 +13,12 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final WeatherRepository weatherRepository;
   WeatherBloc(this.weatherRepository) : super(WeatherState.initial()) {
     on<WeatherEvent>((event, emit) async {
-      await event.map(onFetchWeather: (OnFetchWeather? city) async {
-        if (city == null) return;
-
+      await event.map(onFetchWeather: (OnFetchWeather city) async {
         emit(state.copyWith(status: WeatherStatus.loading));
 
         try {
           final weather = Weather.fromRepository(
-            await weatherRepository.getWeather(city as String),
+            await weatherRepository.getWeather(city.city),
           );
           final units = state.temperatureUnits;
           final value = units.isFarenheit

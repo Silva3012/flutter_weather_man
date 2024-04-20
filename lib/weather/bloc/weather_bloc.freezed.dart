@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WeatherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Object? city) onFetchWeather,
+    required TResult Function(String city) onFetchWeather,
     required TResult Function() onRefreshWeather,
     required TResult Function() onToggleUnits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Object? city)? onFetchWeather,
+    TResult? Function(String city)? onFetchWeather,
     TResult? Function()? onRefreshWeather,
     TResult? Function()? onToggleUnits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Object? city)? onFetchWeather,
+    TResult Function(String city)? onFetchWeather,
     TResult Function()? onRefreshWeather,
     TResult Function()? onToggleUnits,
     required TResult orElse(),
@@ -86,7 +86,7 @@ abstract class _$$OnFetchWeatherImplCopyWith<$Res> {
           $Res Function(_$OnFetchWeatherImpl) then) =
       __$$OnFetchWeatherImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Object? city});
+  $Res call({String city});
 }
 
 /// @nodoc
@@ -100,10 +100,13 @@ class __$$OnFetchWeatherImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? city = freezed,
+    Object? city = null,
   }) {
     return _then(_$OnFetchWeatherImpl(
-      freezed == city ? _value.city : city,
+      null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -114,7 +117,7 @@ class _$OnFetchWeatherImpl implements OnFetchWeather {
   const _$OnFetchWeatherImpl(this.city);
 
   @override
-  final Object? city;
+  final String city;
 
   @override
   String toString() {
@@ -126,12 +129,11 @@ class _$OnFetchWeatherImpl implements OnFetchWeather {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnFetchWeatherImpl &&
-            const DeepCollectionEquality().equals(other.city, city));
+            (identical(other.city, city) || other.city == city));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(city));
+  int get hashCode => Object.hash(runtimeType, city);
 
   @JsonKey(ignore: true)
   @override
@@ -143,7 +145,7 @@ class _$OnFetchWeatherImpl implements OnFetchWeather {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Object? city) onFetchWeather,
+    required TResult Function(String city) onFetchWeather,
     required TResult Function() onRefreshWeather,
     required TResult Function() onToggleUnits,
   }) {
@@ -153,7 +155,7 @@ class _$OnFetchWeatherImpl implements OnFetchWeather {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Object? city)? onFetchWeather,
+    TResult? Function(String city)? onFetchWeather,
     TResult? Function()? onRefreshWeather,
     TResult? Function()? onToggleUnits,
   }) {
@@ -163,7 +165,7 @@ class _$OnFetchWeatherImpl implements OnFetchWeather {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Object? city)? onFetchWeather,
+    TResult Function(String city)? onFetchWeather,
     TResult Function()? onRefreshWeather,
     TResult Function()? onToggleUnits,
     required TResult orElse(),
@@ -210,9 +212,9 @@ class _$OnFetchWeatherImpl implements OnFetchWeather {
 }
 
 abstract class OnFetchWeather implements WeatherEvent {
-  const factory OnFetchWeather(final Object? city) = _$OnFetchWeatherImpl;
+  const factory OnFetchWeather(final String city) = _$OnFetchWeatherImpl;
 
-  Object? get city;
+  String get city;
   @JsonKey(ignore: true)
   _$$OnFetchWeatherImplCopyWith<_$OnFetchWeatherImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -256,7 +258,7 @@ class _$OnRefreshWeatherImpl implements OnRefreshWeather {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Object? city) onFetchWeather,
+    required TResult Function(String city) onFetchWeather,
     required TResult Function() onRefreshWeather,
     required TResult Function() onToggleUnits,
   }) {
@@ -266,7 +268,7 @@ class _$OnRefreshWeatherImpl implements OnRefreshWeather {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Object? city)? onFetchWeather,
+    TResult? Function(String city)? onFetchWeather,
     TResult? Function()? onRefreshWeather,
     TResult? Function()? onToggleUnits,
   }) {
@@ -276,7 +278,7 @@ class _$OnRefreshWeatherImpl implements OnRefreshWeather {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Object? city)? onFetchWeather,
+    TResult Function(String city)? onFetchWeather,
     TResult Function()? onRefreshWeather,
     TResult Function()? onToggleUnits,
     required TResult orElse(),
@@ -364,7 +366,7 @@ class _$OnToggleUnitsImpl implements OnToggleUnits {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Object? city) onFetchWeather,
+    required TResult Function(String city) onFetchWeather,
     required TResult Function() onRefreshWeather,
     required TResult Function() onToggleUnits,
   }) {
@@ -374,7 +376,7 @@ class _$OnToggleUnitsImpl implements OnToggleUnits {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Object? city)? onFetchWeather,
+    TResult? Function(String city)? onFetchWeather,
     TResult? Function()? onRefreshWeather,
     TResult? Function()? onToggleUnits,
   }) {
@@ -384,7 +386,7 @@ class _$OnToggleUnitsImpl implements OnToggleUnits {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Object? city)? onFetchWeather,
+    TResult Function(String city)? onFetchWeather,
     TResult Function()? onRefreshWeather,
     TResult Function()? onToggleUnits,
     required TResult orElse(),

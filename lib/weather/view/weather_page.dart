@@ -77,7 +77,7 @@ class _WeatherViewState extends State<WeatherView> {
         onPressed: () async {
           final city = await Navigator.of(context).push(SearchPage.route());
           if (!context.mounted) return;
-          BlocProvider.of<WeatherBloc>(context).add(OnFetchWeather(city));
+          BlocProvider.of<WeatherBloc>(context).add(OnFetchWeather(city!));
         },
       ),
     );
