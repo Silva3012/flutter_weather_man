@@ -14,5 +14,8 @@ class WeatherResponse with _$WeatherResponse {
       const WeatherResponse(temperature: 0, weatherCode: 0);
 
   factory WeatherResponse.fromJson(Map<String, dynamic> json) =>
-      _$WeatherResponseFromJson(json);
+      WeatherResponse(
+        temperature: json['temperature']?.toDouble() ?? 0.0,
+        weatherCode: json['weatherCode']?.toDouble() ?? 0.0,
+      );
 }
